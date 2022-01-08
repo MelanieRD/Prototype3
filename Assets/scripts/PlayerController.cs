@@ -6,7 +6,7 @@ public class PlayerController : MonoBehaviour
 {
     private Rigidbody playerRb;
     
-    public float speed = 10f;
+    public float speed = 10;
     public GameObject playerObj;
     public float acceleration = 10f;
     public float gravityModifier;
