@@ -6,12 +6,12 @@ public class fondoController : MonoBehaviour
 {
 
     public GameObject fondoPrefab;
-    public Vector3 spawnInicio = new Vector3(34, 9, 4 );
+    private Vector3 spawnInicio = new Vector3(100, 9.5f, 4 );
 
     // Start is called before the first frame update
     void Start()
     {
-        InvokeRepeating("spawn", 1f, 10.5f);
+        InvokeRepeating("spawn", 5.8f, 10.57f);
     }
 
     // Update is called once per frame

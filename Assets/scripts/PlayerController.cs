@@ -6,12 +6,13 @@ public class PlayerController : MonoBehaviour
 {
     private Rigidbody playerRb;
     
-    public float speed = 10;
+    private float speed = 100;
     public GameObject playerObj;
-    public float acceleration = 10f;
-    public float gravityModifier;
+    private float acceleration = 25;
+    private float gravityModifier = 5;
 
     private bool onGround = true;
+    private bool gameOver = false;
 
    
     void Start()
@@ -40,6 +41,15 @@ public class PlayerController : MonoBehaviour
 
     private void OnCollisionEnter(Collision collision)
     {
-        onGround = true;
+        if (collision.gameObject.CompareTag("Ground"))
+        {
+            onGround = true;
+        }
+        else if (collision.gameObject.CompareTag("Obstacle")) {
+
+            gameOver = true;
+            Debug.Log("Game Over");
+        
+        }
     }
 }
