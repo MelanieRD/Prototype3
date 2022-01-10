@@ -12,7 +12,7 @@ public class PlayerController : MonoBehaviour
     private float gravityModifier = 5;
 
     private bool onGround = true;
-    private bool gameOver = false;
+    public bool gameOver = false;
 
    
     void Start()
