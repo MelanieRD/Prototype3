@@ -4,11 +4,13 @@ using UnityEngine;
 
 public class spawnObstacle : MonoBehaviour
 {
+
     public GameObject obstacle_obj;
+    private PlayerController playerControllerScript;
     // Start is called before the first frame update
     void Start()
     {
-
+        playerControllerScript = GameObject.Find("player").GetComponent<PlayerController>();
 
         InvokeRepeating("spawn",1f, Random.Range(1f,5f));
 
@@ -22,6 +24,8 @@ public class spawnObstacle : MonoBehaviour
 
 
     void spawn() {
-        Instantiate(obstacle_obj, new Vector3(28,-0.57f,0), obstacle_obj.transform.rotation);
-    }
+        if (playerControllerScript.gameOver == false) {
+            Instantiate(obstacle_obj, new Vector3(28, -0.57f, 0), obstacle_obj.transform.rotation);
+        }
+        }
 }
