@@ -25,7 +25,7 @@ public class spawnObstacle : MonoBehaviour
 
     void spawn() {
         if (playerControllerScript.gameOver == false) {
-            Instantiate(obstacle_obj, new Vector3(28, -0.57f, 0), obstacle_obj.transform.rotation);
+            Instantiate(obstacle_obj, new Vector3(28, 0, 0), obstacle_obj.transform.rotation);
         }
         }
 }

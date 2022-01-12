@@ -5,6 +5,7 @@ using UnityEngine;
 public class PlayerController : MonoBehaviour
 {
     private Rigidbody playerRb;
+    private Animator playerAnim;
     
     private float speed = 100;
     public GameObject playerObj;
@@ -18,24 +19,22 @@ public class PlayerController : MonoBehaviour
     void Start()
     {
         playerRb = GetComponent<Rigidbody>();
+        playerAnim = GetComponent<Animator>();
         Physics.gravity *= gravityModifier;
     }
 
     // Update is called once per frame
     void Update()
     {
-        // Avanzar
-        if (Input.GetKeyDown(KeyCode.RightArrow) || Input.GetKeyDown(KeyCode.D))
-        {
-            playerObj.transform.position = Vector3.right * Time.deltaTime* speed;
-        }
         
 
         // Saltar
-            if (Input.GetKeyDown(KeyCode.Space) && onGround == true) {
+            if (Input.GetKeyDown(KeyCode.Space) && onGround == true && gameOver != true) {
 
             playerRb.AddForce(Vector3.up * acceleration, ForceMode.Impulse);
             onGround = false;
+            playerAnim.SetTrigger("Jump_trig");
+
         } 
     }
 
@@ -49,6 +48,8 @@ public class PlayerController : MonoBehaviour
 
             gameOver = true;
             Debug.Log("Game Over");
+            playerAnim.SetBool("Death_b", true);
+            playerAnim.SetInteger("DeathType_int", 1);
         
         }
     }
